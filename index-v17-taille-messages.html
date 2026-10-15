@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Looksmax UP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #0d0b13;
+    --surface: #171320;
+    --surface-2: #1f1a2c;
+    --line: #322b45;
+    --text: #f2eef9;
+    --text-dim: #9c93b3;
+    --violet: #7c5cff;
+    --violet-dim: #4b3894;
+    --steel: #5b7fd6;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+
+  /* NAV */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(13,11,19,.9);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  nav.wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 24px;
+  }
+  .brand{display:flex; align-items:center; gap:10px;}
+  .brand img{width:34px; height:34px; border-radius:9px;}
+  .brand span{
+    font-family:'Sora', sans-serif; font-weight:700; font-size:18px;
+    letter-spacing:.02em;
+  }
+  .brand b{color:var(--violet);}
+  .navlinks{display:flex; gap:26px; font-size:14px; color:var(--text-dim);}
+  .navlinks .navbtn{background:none; border:none; padding:0; font-family:'Inter',sans-serif; font-size:14px; color:var(--text-dim); text-decoration:none; transition:color .2s; cursor:pointer;}
+  .navlinks .navbtn:hover{color:var(--text);}
+  .navbtn:focus-visible, .btn:focus-visible{outline:2px solid var(--violet); outline-offset:3px; border-radius:4px;}
+  .btn{cursor:pointer; font-family:'Inter',sans-serif;}
+
+  /* HERO */
+  .hero{
+    padding:90px 24px 70px;
+    text-align:center;
+    background:
+      radial-gradient(ellipse 700px 400px at 50% -10%, rgba(124,92,255,.18), transparent 70%);
+    border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    display:inline-block;
+    font-size:12px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--violet); font-weight:600; margin-bottom:18px;
+  }
+  h1.display{
+    font-family:'Sora', sans-serif; font-weight:800;
+    font-size:clamp(34px,6vw,58px);
+    letter-spacing:-.01em;
+    background:linear-gradient(180deg,#f2eef9 20%, #b9a9f7 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    line-height:1.05;
+  }
+  .hero p{
+    max-width:520px; margin:20px auto 0;
+    color:var(--text-dim); font-size:16px;
+  }
+  .hero-cta{
+    margin-top:34px; display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-block; padding:13px 26px; border-radius:12px;
+    font-weight:600; font-size:14.5px; text-decoration:none;
+    transition:transform .15s ease;
+    appearance:none; -webkit-appearance:none;
+    background:transparent; border:none; outline:none;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{background:linear-gradient(120deg,var(--violet),var(--steel)); color:#0d0b13;}
+  .btn-ghost{background:transparent; border:1px solid var(--line); color:var(--text);}
+
+  /* MOUNTAIN DIVIDER — signature motif echoing the logo's climb-to-arrow */
+  .divider{
+    height:64px; margin:0 auto; max-width:1080px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .divider svg{opacity:.55;}
+
+  /* SECTION SHELL */
+  section.block{padding:72px 24px;}
+  section.block:nth-of-type(even){background:var(--surface);}
+  .block-head{max-width:640px; margin:0 auto 42px; text-align:center;}
+  .block-tag{
+    font-size:11.5px; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--steel); font-weight:600; margin-bottom:10px;
+  }
+  .block-title{
+    font-family:'Sora', sans-serif; font-weight:700; font-size:clamp(24px,3.4vw,32px);
+  }
+  .block-sub{color:var(--text-dim); margin-top:10px; font-size:15px;}
+
+  /* CARD GRID */
+  .grid{
+    display:grid; gap:16px; max-width:1080px; margin:0 auto;
+    grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+  }
+  .card{
+    background:var(--surface-2); border:1px solid var(--line); border-radius:16px;
+    padding:20px;
+  }
+  .card .ic{
+    width:42px; height:42px; border-radius:11px;
+    background:linear-gradient(135deg, var(--violet-dim), var(--surface-2));
+    display:flex; align-items:center; justify-content:center;
+    font-size:19px; margin-bottom:14px;
+  }
+  .card h3{font-size:15.5px; font-weight:600; margin-bottom:6px;}
+  .card p{font-size:13.5px; color:var(--text-dim);}
+  .card .note{
+    display:block; margin-top:10px; font-size:11.5px; color:#c9a94a;
+    border-top:1px solid var(--line); padding-top:8px;
+  }
+
+  /* TIKTOK */
+  .tiktok-row{display:flex; gap:18px; justify-content:center; flex-wrap:wrap;}
+  .tt-card{
+    display:flex; align-items:center; gap:14px;
+    background:var(--surface-2); border:1px solid var(--line);
+    border-radius:16px; padding:16px 22px; text-decoration:none;
+    min-width:230px;
+  }
+  .tt-card:hover{border-color:var(--violet);}
+  .tt-icon{
+    width:44px; height:44px; border-radius:12px; background:#000;
+    display:flex; align-items:center; justify-content:center; font-size:20px;
+  }
+  .tt-name{font-weight:600; font-size:14.5px;}
+  .tt-sub{font-size:12px; color:var(--text-dim);}
+
+  /* RANKING (content, not faces) */
+  .rank-list{max-width:620px; margin:0 auto; display:flex; flex-direction:column; gap:10px;}
+  .rank-item{
+    display:flex; align-items:center; gap:14px;
+    background:var(--surface-2); border:1px solid var(--line);
+    border-radius:14px; padding:14px 16px;
+  }
+  .rank-pos{
+    font-family:'Sora', sans-serif; font-weight:700; color:var(--violet);
+    width:26px; text-align:center; font-size:15px;
+  }
+  .rank-body{flex:1;}
+  .rank-body h4{font-size:14px; font-weight:600;}
+  .rank-body span{font-size:12px; color:var(--text-dim);}
+  .rank-votes{display:flex; align-items:center; gap:8px;}
+  .founder-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:3px;
+    font-size:11.5px;
+    font-weight:700;
+    color:#3897f0;
+    vertical-align:middle;
+  }
+  .founder-badge svg{flex:0 0 auto;}
+  .vbtn{
+    width:30px; height:30px; border-radius:8px; border:1px solid var(--line);
+    background:transparent; color:var(--text); cursor:pointer; font-size:14px;
+  }
+  .vbtn:hover{border-color:var(--violet);}
+  .vscore{font-family:'Sora', sans-serif; font-weight:700; font-size:14px; min-width:26px; text-align:center;}
+
+  /* COMMUNITY */
+  .community{
+    max-width:640px; margin:0 auto;
+    background:var(--surface-2); border:1px solid var(--line); border-radius:18px;
+    padding:28px;
+  }
+  .community h3{font-family:'Sora', sans-serif; font-size:19px; margin-bottom:8px;}
+  .community p{color:var(--text-dim); font-size:14px; margin-bottom:20px;}
+  .field{margin-bottom:14px;}
+  .field label{display:block; font-size:12.5px; color:var(--text-dim); margin-bottom:6px;}
+  .field input, .field textarea, .field select{
+    width:100%; background:var(--bg); border:1px solid var(--line); border-radius:10px;
+    padding:11px 13px; color:var(--text); font-family:'Inter',sans-serif; font-size:14px;
+  }
+  .field textarea{resize:vertical; min-height:90px;}
+  .submit{
+    width:100%; padding:13px; border:none; border-radius:12px;
+    background:linear-gradient(120deg,var(--violet),var(--steel));
+    color:#0d0b13; font-weight:700; font-size:14.5px; cursor:pointer;
+  }
+  .confirm{
+    display:none; margin-top:14px; padding:12px 14px; border-radius:10px;
+    background:rgba(124,92,255,.12); border:1px solid var(--violet-dim);
+    font-size:13px; color:var(--text);
+  }
+
+  footer{
+    padding:34px 24px; text-align:center; color:var(--text-dim); font-size:12.5px;
+    border-top:1px solid var(--line);
+  }
+  footer a{color:var(--violet); text-decoration:none;}
+
+  /* QUICK CATEGORY NAV */
+  .quicknav{
+    display:flex; gap:8px; overflow-x:auto; padding:14px 20px;
+    -webkit-overflow-scrolling:touch;
+  }
+  .quicknav::-webkit-scrollbar{display:none;}
+  .qn-btn{
+    flex:0 0 auto;
+    appearance:none; -webkit-appearance:none;
+    background:var(--surface-2); border:1px solid var(--line); color:var(--text);
+    font-family:'Inter',sans-serif; font-size:13px; font-weight:500;
+    padding:9px 15px; border-radius:20px; white-space:nowrap; cursor:pointer;
+  }
+  .qn-btn:active{border-color:var(--violet);}
+
+
+  /* PAGES + BOTTOM TAB BAR */
+  body{padding-bottom:76px;}
+  .page{display:none;}
+  .page.active{display:block;}
+  .tabbar{
+    position:fixed; bottom:0; left:0; right:0; z-index:100;
+    display:flex; background:var(--surface); border-top:1px solid var(--line);
+    padding-bottom:env(safe-area-inset-bottom,0);
+  }
+  .tab-btn{
+    flex:1; appearance:none; -webkit-appearance:none; background:transparent; border:none;
+    display:flex; flex-direction:column; align-items:center; justify-content:center; gap:2px;
+    padding:10px 4px 12px; font-family:'Inter',sans-serif; font-size:11px; color:var(--text-dim);
+    cursor:pointer;
+  }
+  .tab-icon{font-size:19px; line-height:1;}
+  .tab-btn.active{color:var(--violet);}
+
+  /* DIAGNOSTIC PERSONNALISÉ */
+  .diag-wrap{max-width:760px;margin:0 auto;}
+  .diag-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+  .diag-cat,.qn-btn{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:14px;padding:15px;text-align:left;cursor:pointer;font-family:'Inter',sans-serif;transition:transform .15s,border-color .15s,background .15s;}
+  .diag-cat:hover,.qn-btn:hover{transform:translateY(-1px);border-color:var(--steel);background:var(--surface-2);}
+  .diag-cat .diag-icon{font-size:22px;display:block;margin-bottom:6px;}
+  .diag-cat strong{display:block;font-size:14px;}
+  .diag-cat small{display:block;color:var(--text-dim);font-size:11.5px;margin-top:3px;}
+  .diag-options{display:grid;grid-template-columns:1fr;gap:9px;margin-top:14px;}
+  .diag-panel{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;}
+  .diag-panel h3{font-family:'Sora',sans-serif;font-size:17px;margin-bottom:4px;}
+  .diag-result{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;}
+  .diag-result h3{font-family:'Sora',sans-serif;font-size:18px;margin-bottom:10px;}
+  .diag-product img{width:56px;height:56px;object-fit:cover;border-radius:10px;background:var(--surface-2);flex:0 0 auto;}
+  .diag-actions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;}
+  @media(max-width:600px){.diag-grid{grid-template-columns:1fr;}}
+
+</style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <div class="brand">
+      <img src="data:image/png;base64,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" alt="Logo Looksmax UP">
+      <span>Looksmax <b>UP</b></span>
+    </div>
+  </nav>
+</header>
+
+
+<div class="page active" id="page-home">
+<section class="hero">
+  <div class="eyebrow">Discipline · Amélioration · Version supérieure</div>
+  <h1 class="display">Deviens ta<br>meilleure version</h1>
+  <p>Alimentation, muscu, peau, parfum, sommeil — des conseils concrets pour progresser, et une communauté pour en parler.</p>
+  <div class="hero-cta">
+    <button type="button" class="btn btn-primary" data-goto="communaute">Poser une question</button>
+    <button type="button" class="btn btn-ghost" data-scroll="tiktok">Suivre sur TikTok</button>
+  </div>
+</section>
+<div class="divider">
+  <svg width="220" height="40" viewBox="0 0 220 40" fill="none">
+    <polyline points="0,32 40,32 60,10 80,24 105,4 130,20 155,8 220,8" stroke="url(#g)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M205,3 L220,8 L207,15" stroke="url(#g)" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <defs><linearGradient id="g" x1="0" y1="0" x2="220" y2="0">
+      <stop offset="0%" stop-color="#7c5cff"/><stop offset="100%" stop-color="#5b7fd6"/>
+    </linearGradient></defs>
+  </svg>
+</div>
+
+<!-- TIKTOK -->
+<section class="block" id="tiktok">
+  <div class="block-head">
+    <div class="block-tag">Créateurs</div>
+    <div class="block-title">Suis le contenu Looksmax UP</div>
+    <p class="block-sub">Clique sur un compte pour voir les conseils en vidéo.</p>
+  </div>
+  <div class="tiktok-row">
+    <a class="tt-card" href="https://www.tiktok.com/@adam_mrc7" target="_blank" rel="noopener">
+      <div class="tt-icon">🎵</div>
+      <div><div class="tt-name">@adam_mrc7</div><div class="tt-sub">TikTok</div></div>
+    </a>
+    <a class="tt-card" href="https://www.tiktok.com/@louis_nrm" target="_blank" rel="noopener">
+      <div class="tt-icon">🎵</div>
+      <div><div class="tt-name">@louis_nrm</div><div class="tt-sub">TikTok</div></div>
+    </a>
+  </div>
+</section>
+</div>
+
+<div class="page" id="page-conseils">
+<section class="block" style="padding-bottom:0;">
+  <div class="quicknav" style="margin-bottom:8px;">
+    <button type="button" class="qn-btn" data-scroll="alimentation">🥩 Alimentation</button>
+    <button type="button" class="qn-btn" data-scroll="muscu">🏋️ Muscu</button>
+    <button type="button" class="qn-btn" data-scroll="visage">✨ Visage</button>
+    <button type="button" class="qn-btn" data-scroll="parfum">🌿 Parfum</button>
+    <button type="button" class="qn-btn" data-scroll="sommeil">🌙 Sommeil</button>
+  </div>
+</section>
+<!-- ALIMENTATION -->
+<section class="block" id="alimentation">
+  <div class="block-head">
+    <div class="block-tag">Alimentation</div>
+    <div class="block-title">Manger pour progresser</div>
+    <p class="block-sub">Des aliments denses en nutriments à privilégier au quotidien.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="ic">🥩</div><h3>Viande & foie</h3><p>La viande rouge et le foie apportent des protéines complètes, du fer facilement assimilable et de la vitamine B12, trois éléments clés pour la récupération musculaire, l'énergie quotidienne et la production de globules rouges. Le foie en particulier est l'un des aliments les plus denses en nutriments qui existent : vitamine A, cuivre, B12 en grande quantité. Deux à trois portions de viande par semaine et un peu de foie une fois par semaine suffisent pour en tirer les bénéfices sans excès.</p></div>
+    <div class="card"><div class="ic">🍯</div><h3>Miel</h3><p>Le miel est une source d'énergie rapide, utile avant un entraînement, et il contient de petites quantités d'antioxydants et de composés antibactériens naturels. Une cuillère dans une boisson ou sur un fruit le matin peut remplacer un sucre raffiné. Un miel brut de bonne qualité conserve davantage de ces composés qu'un miel très transformé.</p></div>
+    <div class="card"><div class="ic">🧀</div><h3>Fromage & lait</h3><p>Les produits laitiers apportent du calcium pour les os, des protéines de bonne qualité et parfois des probiotiques utiles à la digestion (yaourts, fromages affinés). Ils peuvent être consommés quotidiennement en quantité raisonnable, en accompagnement d'un repas ou en collation. Le lait et le fromage crus, quand ils viennent d'une source fiable, ont un goût et un profil nutritionnel souvent jugés supérieurs à la version pasteurisée — sache simplement que le cru comporte un risque infectieux réel (listeria, salmonelle) que la pasteurisation supprime.</p></div>
+    <div class="card"><div class="ic">🥔</div><h3>Pommes de terre</h3><p>Souvent sous-estimée, la pomme de terre est une excellente source de glucides complexes, de vitamine C et surtout de potassium — elle en contient même plus qu'une banane. Cuite à l'eau ou au four avec la peau, c'est une base énergétique simple et peu coûteuse avant ou après l'entraînement.</p></div>
+    <div class="card"><div class="ic">🍌</div><h3>Fruits & bananes</h3><p>Les fruits apportent des vitamines, des fibres et des sucres naturels qui donnent de l'énergie sans le pic brutal des sucres raffinés. La banane en particulier est riche en potassium et en vitamine B6, pratique en collation avant le sport ou pour limiter les crampes.</p></div>
+    <div class="card"><div class="ic">🥥</div><h3>Eau de coco</h3><p>Naturellement riche en potassium et en électrolytes, l'eau de coco aide à réhydrater efficacement après une séance de sport, surtout en cas de forte transpiration. Elle est aussi souvent utilisée pour réduire la sensation de ballonnement grâce à son effet légèrement diurétique et sa richesse en minéraux.</p></div>
+    <div class="card"><div class="ic">🥚</div><h3>Œufs</h3><p>L'œuf est l'un des aliments les plus complets qui existent : protéines de très haute qualité, choline (bonne pour le cerveau), vitamine D et bons gras dans le jaune. Il peut être consommé quasiment tous les jours sans souci pour la majorité des gens.</p></div>
+    <div class="card"><div class="ic">🐟</div><h3>Poisson gras</h3><p>Saumon, maquereau ou sardines apportent des oméga-3, essentiels pour la récupération, l'inflammation et même la qualité de la peau. Deux portions par semaine sont recommandées par la plupart des nutritionnistes.</p></div>
+    <div class="card"><div class="ic">🫒</div><h3>Bons gras</h3><p>Huile d'olive, avocat et oléagineux (amandes, noix) apportent des graisses insaturées qui soutiennent la production hormonale, notamment la testostérone. Ce sont des graisses à privilégier par rapport aux huiles très raffinées.</p></div>
+    <div class="card"><div class="ic">🧂</div><h3>Sel & électrolytes</h3><p>Contrairement à une idée reçue, le sel n'est pas l'ennemi quand on transpire beaucoup (sport, chaleur) : sodium, potassium et magnésium doivent être renouvelés pour éviter fatigue et crampes. L'important est l'équilibre, pas la suppression totale.</p></div>
+    <div class="card"><div class="ic">💧</div><h3>Hydratation</h3><p>L'eau reste la base absolue de tout : elle conditionne la qualité de la peau, la digestion, la concentration et la récupération musculaire. Vise environ 1,5 à 2 litres par jour, plus en cas d'entraînement intense ou de forte chaleur.</p></div>
+  </div>
+</section>
+<!-- MUSCU -->
+<section class="block" id="muscu">
+  <div class="block-head">
+    <div class="block-tag">Musculation</div>
+    <div class="block-title">Prendre du muscle intelligemment</div>
+    <p class="block-sub">Les bases qui comptent avant les compléments.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="ic">🏋️</div><h3>Régularité</h3><p>Rien ne remplace la constance : 3 à 4 séances par semaine, réparties sur l'ensemble des groupes musculaires, avec une charge qui augmente progressivement (surcharge progressive), donnent de meilleurs résultats sur un an que n'importe quel complément. La progression compte plus que l'intensité d'une seule séance.</p></div>
+    <div class="card"><div class="ic">🥚</div><h3>Protéines</h3><p>Vise un apport réparti sur 3 à 4 repas dans la journée plutôt que tout d'un coup le soir — le corps utilise mieux les protéines quand elles arrivent régulièrement. Viande, œufs, poisson, laitages et légumineuses couvrent largement les besoins pour la plupart des pratiquants.</p></div>
+    <div class="card"><div class="ic">💊</div><h3>Créatine</h3><p>C'est le complément le plus étudié scientifiquement pour la force et la prise de muscle, avec un excellent profil de sécurité sur le long terme. Elle aide à reconstituer l'énergie rapide des muscles pendant l'effort, ce qui permet de pousser un peu plus lourd ou un peu plus longtemps.</p></div>
+    <div class="card"><div class="ic">🐟</div><h3>Oméga-3 & vitamine D</h3><p>Utiles en complément si l'alimentation manque de poisson gras ou si l'exposition au soleil est limitée (hiver, travail en intérieur). La vitamine D joue un rôle dans la force musculaire et l'immunité — vérifie toujours les dosages indiqués sur l'emballage du produit.</p></div>
+    <div class="card"><div class="ic">😴</div><h3>Récupération</h3><p>Le muscle ne se construit pas pendant la séance mais pendant le repos qui suit. Laisser 48h entre deux séances qui sollicitent le même groupe musculaire, et bien dormir, sont aussi importants que l'entraînement lui-même.</p></div>
+    <div class="card"><div class="ic">📈</div><h3>Suivre sa progression</h3><p>Noter les charges et les répétitions à chaque séance permet de voir objectivement si on progresse, plutôt que de se fier uniquement au miroir. Un carnet ou une appli de suivi suffit.</p></div>
+    <div class="card"><div class="ic">🤸</div><h3>Échauffement & mobilité</h3><p>5 à 10 minutes d'échauffement articulaire avant de charger lourd réduisent le risque de blessure et améliorent la qualité d'exécution des mouvements. La mobilité des épaules et des hanches est souvent le point faible à travailler.</p></div>
+    <div class="card"><div class="ic">🧂</div><h3>Magnésium & zinc</h3><p>Ces deux minéraux interviennent dans la récupération musculaire et la production hormonale. Une carence, fréquente chez les sportifs qui transpirent beaucoup, peut se traduire par fatigue et crampes.</p></div>
+  </div>
+</section>
+<!-- VISAGE -->
+<section class="block" id="visage">
+  <div class="block-head">
+    <div class="block-tag">Visage</div>
+    <div class="block-title">Mâchoire, posture & peau</div>
+    <p class="block-sub">Des habitudes simples plutôt que des produits industriels.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="ic">🦴</div><h3>Mâchoire (mewing)</h3><p>Le "mewing" consiste à placer la langue à plat contre le palais en permanence, bouche fermée, plutôt qu'au fond de la bouche ou contre les dents du bas. L'idée derrière cette pratique : la pression continue de la langue pousserait le maxillaire vers l'avant, ce qui, maintenu sur plusieurs années, viserait à améliorer la position générale de la mâchoire et le profil du visage.</p></div>
+    <div class="card"><div class="ic">💪</div><h3>Neck curl</h3><p>Allongé sur le dos, bord du lit, tête dans le vide : relève le menton vers la poitrine en contractant les muscles avant du cou, redescends lentement. 3 séries de 15-20 répétitions, 3 fois par semaine. Ça muscle le cou et peut affiner visuellement la zone sous la mâchoire (double menton).</p></div>
+    <div class="card"><div class="ic">🦷</div><h3>Mastic gum / chewing intensif</h3><p>Mâcher un chewing-gum dur (type mastic gum) 15-20 minutes par jour sollicite fortement les muscles masséters (mâchoire). Certains rapportent un effet sur le volume de la mâchoire à long terme, mais attention à ne pas en abuser : un excès peut fatiguer l'articulation de la mâchoire (ATM).</p></div>
+    <div class="card"><div class="ic">😬</div><h3>Face pulling / jawline flex</h3><p>Exercice qui consiste à serrer volontairement la mâchoire tout en tirant les coins de la bouche vers le bas (comme une grimace), pour contracter les masséters. Quelques séries de 10-20 secondes par jour, plutôt en complément d'une bonne posture générale que comme solution isolée.</p></div>
+    <div class="card"><div class="ic">🧍</div><h3>Posture</h3><p>Épaules basses et relâchées, dos droit sans être rigide, menton parallèle au sol : une bonne posture change immédiatement la perception de la carrure et du visage, souvent plus que n'importe quel autre changement. Elle s'entretient avec des étirements réguliers du dos et des épaules.</p></div>
+    <div class="card"><div class="ic">✨</div><h3>Peau minimaliste</h3><p>Eau, sommeil suffisant, alimentation équilibrée et protection solaire quotidienne font l'essentiel du travail sur le long terme — bien plus que l'accumulation de produits. La peau reflète surtout l'état général du corps.</p></div>
+    <div class="card"><div class="ic">🚿</div><h3>Hygiène de base</h3><p>Un nettoyage à l'eau tiède matin et soir suffit pour la majorité des peaux, sans les agresser avec des produits trop décapants. Se laver le visage après le sport limite aussi l'accumulation de sueur qui peut boucher les pores.</p></div>
+    <div class="card"><div class="ic">☀️</div><h3>Protection solaire</h3><p>C'est probablement le geste le plus sous-estimé pour la peau : le soleil est la première cause de vieillissement cutané prématuré (rides, taches). Une protection quotidienne, même légère, ralentit ce phénomène sur des années.</p></div>
+    <div class="card"><div class="ic">💇</div><h3>Cheveux & coiffure</h3><p>Une coupe adaptée à la forme du visage change souvent plus la perception générale qu'on ne le pense. Un cuir chevelu propre et bien entretenu favorise aussi des cheveux en meilleure santé visuellement.</p></div>
+    <div class="card"><div class="ic">🦷</div><h3>Sourire & dents</h3><p>Un brossage rigoureux deux fois par jour et un détartrage régulier chez le dentiste gardent le sourire net, un élément du visage qu'on remarque énormément au premier regard.</p></div>
+    <div class="card"><div class="ic">👁️</div><h3>Sourcils</h3><p>Un entretien simple (retirer les poils isolés qui débordent) suffit à structurer le regard sans donner un effet trop travaillé.</p></div>
+    <div class="card"><div class="ic">🧊</div><h3>Gua sha / roller glacé</h3><p>Passer un gua sha ou un rouleau glacé sur le visage le matin peut réduire temporairement les poches et donner un contour plus défini pendant quelques heures — un effet cosmétique ponctuel, pas une transformation permanente.</p></div>
+  </div>
+</section>
+<!-- PARFUM -->
+<section class="block" id="parfum">
+  <div class="block-head">
+    <div class="block-tag">Parfum</div>
+    <div class="block-title">Se parfumer intelligemment</div>
+    <p class="block-sub">Une odeur qu'on remarque sans qu'elle envahisse.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="ic">🎯</div><h3>Points de pulsation</h3><p>Vaporise sur le cou, les poignets et le torse : ce sont des zones où le sang circule près de la peau, ce qui diffuse le parfum toute la journée grâce à la chaleur corporelle. Éviter de frotter les poignets après vaporisation, ça casse les molécules du parfum.</p></div>
+    <div class="card"><div class="ic">🧴</div><h3>Peau hydratée</h3><p>Le parfum tient nettement mieux et plus longtemps sur une peau hydratée que sur une peau sèche, car les molécules s'accrochent mieux à une surface grasse/hydratée. Une crème neutre avant le parfum peut prolonger sa tenue.</p></div>
+    <div class="card"><div class="ic">🌗</div><h3>Selon la saison</h3><p>Les notes fraîches (agrumes, aromatiques, marines) fonctionnent mieux l'été car elles sont plus légères, tandis que les notes boisées, épicées ou ambrées tiennent mieux le froid et sont perçues plus intensément en hiver.</p></div>
+    <div class="card"><div class="ic">⚖️</div><h3>Dosage</h3><p>2 à 4 vaporisations suffisent largement : l'objectif est qu'on sente le parfum de près (en discutant, en s'approchant), pas à 3 mètres. Un excès donne souvent l'effet inverse de celui recherché.</p></div>
+    <div class="card"><div class="ic">🗄️</div><h3>Stockage</h3><p>Garde tes parfums à l'abri de la lumière directe et de la chaleur (pas sur le rebord d'une fenêtre ou dans la salle de bain) — la lumière et les variations de température dégradent les molécules plus vite.</p></div>
+    <div class="card"><div class="ic">🎭</div><h3>Selon l'occasion</h3><p>Un parfum plus frais et léger pour la journée/le travail, un parfum plus intense et chaud pour le soir : adapter le parfum au contexte évite d'être soit trop discret, soit envahissant.</p></div>
+  </div>
+</section>
+<!-- SOMMEIL -->
+<section class="block" id="sommeil">
+  <div class="block-head">
+    <div class="block-tag">Sommeil</div>
+    <div class="block-title">Bien dormir pour progresser</div>
+    <p class="block-sub">La récupération compte autant que l'effort.</p>
+  </div>
+  <div class="grid">
+    <div class="card"><div class="ic">🌙</div><h3>Horaires fixes</h3><p>Se coucher et se lever à peu près à la même heure tous les jours, week-end compris, règle l'horloge interne et améliore nettement la qualité du sommeil sur la durée — bien plus que dormir davantage un jour pour compenser un manque de sommeil un autre jour.</p></div>
+    <div class="card"><div class="ic">📵</div><h3>Écrans</h3><p>Réduis les écrans 30 à 60 minutes avant de dormir : la lumière bleue retarde la production de mélatonine, l'hormone du sommeil. Si c'est difficile, un mode "nuit" avec filtre orange limite un peu l'effet.</p></div>
+    <div class="card"><div class="ic">🌡️</div><h3>Chambre fraîche</h3><p>Une pièce autour de 18-19°C favorise un sommeil plus profond, car la température du corps doit légèrement baisser pour s'endormir efficacement. Une pièce trop chaude est une des causes les plus fréquentes de sommeil agité.</p></div>
+    <div class="card"><div class="ic">☀️</div><h3>Lumière du matin</h3><p>S'exposer à la lumière naturelle dès le réveil (fenêtre ouverte, sortie dehors) aide à synchroniser l'horloge interne et améliore la qualité du sommeil la nuit suivante.</p></div>
+    <div class="card"><div class="ic">☕</div><h3>Caféine</h3><p>La caféine a une demi-vie longue : évite café, thé et boissons énergisantes après 14h-15h si tu es sensible, car des traces peuvent encore perturber l'endormissement 8 à 10h plus tard.</p></div>
+    <div class="card"><div class="ic">📖</div><h3>Rituel du soir</h3><p>Répéter les mêmes gestes chaque soir avant de dormir (lecture, étirements légers, lumière tamisée) envoie un signal clair au cerveau qu'il est temps de ralentir.</p></div>
+    <div class="card"><div class="ic">🏃</div><h3>Activité physique</h3><p>L'exercice régulier améliore la qualité du sommeil profond, mais évite les séances très intenses juste avant le coucher, qui peuvent au contraire retarder l'endormissement.</p></div>
+    <div class="card"><div class="ic">🧘</div><h3>Gérer le stress</h3><p>Quelques minutes de respiration lente ou d'écriture rapide des pensées qui tournent en boucle avant de se coucher peuvent réduire le temps d'endormissement lié au stress mental.</p></div>
+  </div>
+</section>
+</div>
+
+<div class="page" id="page-communaute">
+<!-- CONSEILS ASCEND / FORMULAIRE -->
+<section class="block" id="communaute">
+  <div class="block-head">
+    <div class="block-tag">Communauté</div>
+    <div class="block-title">Conseils Ascend</div>
+  </div>
+
+  <div class="community" id="authBox">
+    <h3>Connexion</h3>
+    <p>Un compte est nécessaire pour poster — ça permet de gérer les comptes malveillants si besoin.</p>
+    <div class="field">
+      <label for="authName">Prénom / pseudo (visible publiquement)</label>
+      <input type="text" id="authName">
+    </div>
+    <div class="field">
+      <label for="authEmail">Email</label>
+      <input type="email" id="authEmail">
+    </div>
+    <div class="field">
+      <label for="authPassword">Mot de passe</label>
+      <input type="password" id="authPassword">
+    </div>
+    <div style="display:flex; gap:10px;">
+      <button type="button" class="submit" id="signUpBtn" style="flex:1;">S'inscrire</button>
+      <button type="button" class="submit" id="signInBtn" style="flex:1; background:var(--surface-2); color:var(--text); border:1px solid var(--line);">Se connecter</button>
+    </div>
+    <div class="confirm" id="authMsg"></div>
+  </div>
+
+  <div class="community" id="postBox" style="display:none; margin-top:16px;">
+    <h3>Poser une question</h3>
+    <p id="loggedAs" style="margin-bottom:14px;"></p>
+    <form id="contactForm">
+      <div class="field">
+        <label for="ctopic">Sujet</label>
+        <select id="ctopic">
+          <option>Alimentation</option>
+          <option>Musculation</option>
+          <option>Visage / peau</option>
+          <option>Parfum</option>
+          <option>Sommeil</option>
+          <option>Autre</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="cmsg">Ton message</label>
+        <textarea id="cmsg" required></textarea>
+      </div>
+      <button type="submit" class="submit">Publier</button>
+    </form>
+    <button type="button" class="btn btn-ghost" id="signOutBtn" style="margin-top:12px; padding:9px 16px; font-size:13px;">Se déconnecter</button>
+  </div>
+</section>
+</div>
+
+
+<div class="page" id="page-diagnostic">
+<section class="block" id="diagnostic">
+  <div class="block-head">
+    <div class="block-tag">Diagnostic personnalisé</div>
+    <div class="block-title">Trouve une routine adaptée</div>
+    <p class="block-sub">Choisis un sujet puis réponds à une question pour obtenir des conseils et, lorsque c’est pertinent, une suggestion de produit.</p>
+  </div>
+
+  <div class="diag-wrap">
+    <div class="diag-panel" id="diagStep1">
+      <h3>Quel sujet veux-tu améliorer ?</h3>
+      <p class="block-sub" style="margin-top:3px;">Sélectionne une catégorie.</p>
+      <div class="diag-grid" style="margin-top:14px;">
+        <button type="button" class="diag-cat" data-cat="peau"><span class="diag-icon">🧴</span><strong>Peau</strong><small>Type de peau et routine</small></button>
+        <button type="button" class="diag-cat" data-cat="acne"><span class="diag-icon">🔎</span><strong>Acné</strong><small>Imperfections et marques</small></button>
+        <button type="button" class="diag-cat" data-cat="taches"><span class="diag-icon">✨</span><strong>Taches</strong><small>Pigmentation et teint</small></button>
+        <button type="button" class="diag-cat" data-cat="rougeurs"><span class="diag-icon">🌿</span><strong>Rougeurs</strong><small>Peau sensible et inconfort</small></button>
+        <button type="button" class="diag-cat" data-cat="cheveux"><span class="diag-icon">💇</span><strong>Cheveux</strong><small>Entretien et problèmes courants</small></button>
+        <button type="button" class="diag-cat" data-cat="teint"><span class="diag-icon">🎨</span><strong>Teint</strong><small>Sous-ton et couleurs</small></button>
+      </div>
+    </div>
+
+    <div class="diag-panel" id="diagStep2" style="display:none;">
+      <h3 id="diagSubTitle"></h3>
+      <div class="diag-options" id="diagSubOptions"></div>
+      <div class="diag-actions"><button type="button" class="btn btn-ghost" id="diagBack">← Retour</button></div>
+    </div>
+
+    <div class="diag-result" id="diagResult" style="display:none;">
+      <h3 id="diagResultTitle"></h3>
+      <div id="diagResultBody"></div>
+      <div class="diag-actions"><button type="button" class="btn btn-ghost" id="diagBack2">← Nouveau diagnostic</button></div>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page" id="page-messages">
+<!-- MESSAGES (section à part) -->
+<section class="block" id="messages">
+  <div class="block-head">
+    <div class="block-tag">Fil de discussion</div>
+    <div class="block-title">Messages</div>
+    <p class="block-sub">Les questions publiées par la communauté et leurs réponses.</p>
+  </div>
+  <div class="rank-list" id="forumList" style="max-width:640px; margin:0 auto;"></div>
+</section>
+</div>
+
+
+<footer>
+  Looksmax UP · <a href="https://www.tiktok.com/@adam_mrc7" target="_blank" rel="noopener">@adam_mrc7</a> & <a href="https://www.tiktok.com/@louis_nrm" target="_blank" rel="noopener">@louis_nrm</a> sur TikTok · <a href="mailto:looksmaxup.support@gmail.com">looksmaxup.support@gmail.com</a>
+</footer>
+
+<div class="tabbar">
+  <button type="button" class="tab-btn active" data-goto="home"><span class="tab-icon">🏠</span>Accueil</button>
+  <button type="button" class="tab-btn" data-goto="conseils"><span class="tab-icon">📋</span>Conseils</button>
+  <button type="button" class="tab-btn" data-goto="communaute"><span class="tab-icon">💬</span>Communauté</button>
+  <button type="button" class="tab-btn" data-goto="messages"><span class="tab-icon">📩</span>Messages</button>
+  <button type="button" class="tab-btn" data-goto="diagnostic"><span class="tab-icon">🧭</span>Diagnostic</button>
+</div>
+
+
+<script>
+  document.querySelectorAll('[data-scroll]').forEach(el=>{
+    el.addEventListener('click', ()=>{
+      const target = document.getElementById(el.dataset.scroll);
+      if(target){ target.scrollIntoView({behavior:'smooth', block:'start'}); }
+    });
+  });
+
+  function showPage(id){
+    document.querySelectorAll('.page').forEach(pg => pg.classList.remove('active'));
+    document.getElementById('page-' + id).classList.add('active');
+    document.querySelectorAll('.tab-btn').forEach(t => t.classList.toggle('active', t.dataset.goto === id));
+    window.scrollTo(0,0);
+  }
+  document.querySelectorAll('[data-goto]').forEach(el=>{
+    el.addEventListener('click', ()=> showPage(el.dataset.goto));
+  });
+
+  function escapeHtml(str){
+    const d = document.createElement('div');
+    d.textContent = str;
+    return d.innerHTML;
+  }
+
+  // ====== SUPABASE CONFIG — À COMPLÉTER ======
+  // 1. Crée un compte gratuit sur https://supabase.com et un nouveau projet
+  // 2. Project Settings > API : copie "Project URL" et la clé "anon public"
+  // 3. Colle-les ci-dessous
+  const SUPABASE_URL = "https://sbtpzmruufibiilgwrdy.supabase.co";
+  const SUPABASE_ANON_KEY = "sb_publishable_PWnu_l8yFZyNgdfN8Di5Xw_i7ejW7EO";
+  // L'email qui aura les droits de modération (suppression + bannissement) :
+  const ADMIN_EMAILS = ["looksmaxup.support@gmail.com", "orylouis0412@gmail.com"];
+
+  const CONFIG_MISSING = SUPABASE_URL.includes('METS_TON_URL') || SUPABASE_ANON_KEY.includes('METS_TA_CLE');
+  let sb = null;
+  if(!CONFIG_MISSING){
+    try{
+      sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    } catch(err){
+      console.error("Erreur d'initialisation Supabase :", err);
+    }
+  }
+  let currentUser = null;
+
+  const authBox = document.getElementById('authBox');
+  const postBox = document.getElementById('postBox');
+  const loggedAs = document.getElementById('loggedAs');
+  const authMsg = document.getElementById('authMsg');
+  const forumList = document.getElementById('forumList');
+
+  function isAdmin(){
+    return currentUser && ADMIN_EMAILS.includes(currentUser.email);
+  }
+
+  function updateAuthUI(){
+    if(currentUser){
+      authBox.style.display = 'none';
+      postBox.style.display = 'block';
+      const displayName = currentUser.user_metadata?.display_name || currentUser.email;
+      loggedAs.textContent = 'Connecté en tant que ' + displayName + (isAdmin() ? ' · Mode modérateur' : '');
+    } else {
+      authBox.style.display = 'block';
+      postBox.style.display = 'none';
+    }
+    loadPosts();
+  }
+
+  async function refreshSession(){
+    if(!sb){ updateAuthUI(); return; }
+    try{
+      const { data } = await sb.auth.getSession();
+      currentUser = data.session ? data.session.user : null;
+    } catch(err){
+      console.error('Erreur de session :', err);
+      currentUser = null;
+    }
+    updateAuthUI();
+  }
+
+  function showAuthMsg(text, isError){
+    authMsg.textContent = text;
+    authMsg.style.display = 'block';
+    authMsg.style.borderColor = isError ? '#5a3535' : 'var(--violet-dim)';
+    authMsg.style.background = isError ? 'rgba(224,122,122,.12)' : 'rgba(124,92,255,.12)';
+    authMsg.style.color = isError ? '#e07a7a' : 'var(--text)';
+  }
+
+  const CONFIG_MISSING2 = !sb;
+  if(CONFIG_MISSING2){
+    showAuthMsg("⚠️ Le site n'est pas encore connecté à la base de données (SUPABASE_URL / SUPABASE_ANON_KEY à remplacer dans le code, ou valeurs invalides). L'inscription ne peut pas fonctionner tant que ce n'est pas fait.", true);
+  }
+
+  document.getElementById('signUpBtn').addEventListener('click', async ()=>{
+    if(!sb){ showAuthMsg("⚠️ Configuration Supabase manquante — voir le message ci-dessus.", true); return; }
+    const name = document.getElementById('authName').value.trim();
+    const email = document.getElementById('authEmail').value.trim();
+    const password = document.getElementById('authPassword').value;
+    if(!name || !email || !password){ showAuthMsg('Remplis prénom, email et mot de passe.', true); return; }
+    try{
+      const { data, error } = await sb.auth.signUp({ email, password, options: { data: { display_name: name } } });
+      if(error){ showAuthMsg("Erreur à l'inscription : " + error.message, true); return; }
+      if(data.session){
+        showAuthMsg('Compte créé et connecté !', false);
+        currentUser = data.session.user;
+        updateAuthUI();
+      } else {
+        showAuthMsg("Compte créé. Vérifie ta boîte mail pour confirmer ton adresse avant de te connecter (pense à checker aussi le dossier spam/indésirables).", false);
+      }
+    } catch(err){
+      showAuthMsg("Impossible de contacter le serveur (" + err.message + "). Vérifie ta connexion ou la configuration Supabase.", true);
+    }
+  });
+
+  document.getElementById('signInBtn').addEventListener('click', async ()=>{
+    if(!sb){ showAuthMsg("⚠️ Configuration Supabase manquante — voir le message ci-dessus.", true); return; }
+    const email = document.getElementById('authEmail').value.trim();
+    const password = document.getElementById('authPassword').value;
+    if(!email || !password){ showAuthMsg('Remplis email et mot de passe.', true); return; }
+    try{
+      const { data, error } = await sb.auth.signInWithPassword({ email, password });
+      if(error){ showAuthMsg("Erreur de connexion : " + error.message, true); return; }
+      showAuthMsg('Connexion réussie !', false);
+      currentUser = data.user;
+      updateAuthUI();
+    } catch(err){
+      showAuthMsg("Impossible de contacter le serveur (" + err.message + "). Vérifie ta connexion ou la configuration Supabase.", true);
+    }
+  });
+
+  document.getElementById('signOutBtn').addEventListener('click', async ()=>{
+    await sb.auth.signOut();
+    currentUser = null;
+    updateAuthUI();
+  });
+
+  document.getElementById('contactForm').addEventListener('submit', async function(e){
+    e.preventDefault();
+    if(!currentUser) return;
+    const topic = document.getElementById('ctopic').value;
+    const message = document.getElementById('cmsg').value.trim();
+    if(!message) return;
+    const name = currentUser.user_metadata?.display_name || currentUser.email;
+    const is_founder = ADMIN_EMAILS.includes(currentUser.email);
+    const { error } = await sb.from('posts').insert({
+      user_id: currentUser.id, name, topic, message, parent_id: null, is_founder
+    });
+    if(error){ alert("Erreur lors de la publication : " + error.message); return; }
+    this.reset();
+    showPage('messages');
+  });
+
+  async function loadPosts(){
+    if(!forumList) return;
+    if(!sb){
+      forumList.innerHTML = "<p style=\"color:var(--text-dim); text-align:center;\">Les messages s'afficheront ici une fois la base de données connectée.</p>";
+      return;
+    }
+    try{
+      const { data: topPosts, error } = await sb
+        .from('posts')
+        .select('*')
+        .is('parent_id', null)
+        .order('created_at', { ascending: false });
+      if(error){ forumList.innerHTML = '<p style="color:var(--text-dim); text-align:center;">Impossible de charger les messages pour le moment.</p>'; return; }
+
+      forumList.innerHTML = '';
+      for(const post of topPosts){
+        const { data: replies } = await sb
+          .from('posts')
+          .select('*')
+          .eq('parent_id', post.id)
+          .order('created_at', { ascending: true });
+        forumList.appendChild(renderPostItem(post, replies || []));
+      }
+    } catch(err){
+      forumList.innerHTML = '<p style="color:var(--text-dim); text-align:center;">Impossible de contacter le serveur pour le moment.</p>';
+    }
+  }
+
+  function renderPostItem(post, replies){
+    const item = document.createElement('div');
+    item.className = 'rank-item';
+    item.style.flexDirection = 'column';
+    item.style.alignItems = 'stretch';
+
+    const adminBtns = isAdmin() ? `
+      <button type="button" class="btn btn-ghost delBtn" style="padding:6px 12px; font-size:11.5px;">🗑️ Supprimer</button>
+      <button type="button" class="btn btn-ghost banBtn" style="padding:6px 12px; font-size:11.5px; color:#e07a7a; border-color:#5a3535;">⛔ Bannir l'auteur</button>
+    ` : '';
+
+    item.innerHTML = `
+      <div class="rank-body">
+        <h4>${escapeHtml(post.name)}${post.is_founder ? ' <span class="founder-badge"><svg width="14" height="14" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#3897f0"/><path d="M9 12.5l2 2 4.5-5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Fondateur</span>' : ''} <span style="font-weight:400;color:var(--text-dim);">· ${escapeHtml(post.topic || '')}</span></h4>
+        <p style="margin-top:4px; font-size:12px; color:var(--text);">${escapeHtml(post.message)}</p>
+      </div>
+      <div class="replies" style="margin-top:10px; display:flex; flex-direction:column; gap:8px;"></div>
+      <div style="display:flex; gap:8px; margin-top:10px; flex-wrap:wrap;">
+        <button type="button" class="btn btn-ghost replyToggle" style="padding:7px 14px; font-size:12.5px;">Répondre</button>
+        ${adminBtns}
+      </div>
+      <div class="replyForm" style="display:none; margin-top:10px; gap:8px; flex-direction:column;">
+        <input type="text" class="replyInput" placeholder="Ta réponse..." style="background:var(--bg); border:1px solid var(--line); border-radius:8px; padding:9px 11px; color:var(--text); font-family:'Inter',sans-serif; font-size:13.5px;">
+        <button type="button" class="submit replySubmit" style="padding:9px;">Envoyer la réponse</button>
+      </div>
+    `;
+
+    const repliesEl = item.querySelector('.replies');
+    replies.forEach(r => {
+      const rEl = document.createElement('div');
+      rEl.style.cssText = 'background:var(--bg); border:1px solid var(--line); border-radius:10px; padding:8px 12px; font-size:14.5px; display:flex; justify-content:space-between; gap:10px; align-items:flex-start;';
+      const textSpan = document.createElement('span');
+      const badgeHtml = r.is_founder ? ' <span class="founder-badge"><svg width="14" height="14" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#3897f0"/><path d="M9 12.5l2 2 4.5-5" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Fondateur</span>' : '';
+      textSpan.innerHTML = (r.name ? '<strong>' + escapeHtml(r.name) + '</strong>' + badgeHtml + ' : ' : '') + escapeHtml(r.message);
+      rEl.appendChild(textSpan);
+      if(isAdmin()){
+        const rDel = document.createElement('button');
+        rDel.type = 'button';
+        rDel.textContent = '🗑️';
+        rDel.style.cssText = 'background:none; border:none; color:var(--text-dim); cursor:pointer; flex:0 0 auto;';
+        rDel.addEventListener('click', async ()=>{
+          await sb.from('posts').delete().eq('id', r.id);
+          loadPosts();
+        });
+        rEl.appendChild(rDel);
+      }
+      repliesEl.appendChild(rEl);
+    });
+
+    item.querySelector('.replyToggle').addEventListener('click', ()=>{
+      if(!currentUser){ showPage('communaute'); return; }
+      const rf = item.querySelector('.replyForm');
+      rf.style.display = rf.style.display === 'none' ? 'flex' : 'none';
+    });
+
+    item.querySelector('.replySubmit').addEventListener('click', async ()=>{
+      const input = item.querySelector('.replyInput');
+      const text = input.value.trim();
+      if(!text || !currentUser) return;
+      const name = currentUser.user_metadata?.display_name || currentUser.email;
+      const is_founder = ADMIN_EMAILS.includes(currentUser.email);
+      const { error } = await sb.from('posts').insert({
+        user_id: currentUser.id, name, message: text, parent_id: post.id, is_founder
+      });
+      if(error){ alert("Erreur : " + error.message); return; }
+      input.value = '';
+      loadPosts();
+    });
+
+    if(isAdmin()){
+      item.querySelector('.delBtn').addEventListener('click', async ()=>{
+        if(!confirm('Supprimer ce message ?')) return;
+        await sb.from('posts').delete().eq('id', post.id);
+        loadPosts();
+      });
+      item.querySelector('.banBtn').addEventListener('click', async ()=>{
+        if(!confirm("Bannir l'auteur de ce message ? Il ne pourra plus poster ni répondre.")) return;
+        const { error } = await sb.from('banned_users').insert({ user_id: post.user_id });
+        if(error){ alert("Erreur : " + error.message); return; }
+        alert('Utilisateur banni.');
+      });
+    }
+
+    return item;
+  }
+
+
+  // ====== DIAGNOSTIC PERSONNALISÉ ======
+  const DIAG_DATA = {
+    peau: { label:"Peau", question:"Comment décrirais-tu ta peau ?", options:{
+      "Grasse":{conseil:"Nettoyant doux + niacinamide. Un BHA peut être utilisé quelques fois par semaine si ta peau le tolère. Termine par un hydratant non comédogène et une protection solaire.", produit:{nom:"CeraVe Gel Moussant",prix:"≈ 12 €",lien:"https://www.cerave.fr",img:"produits/cerave-gel-moussant.jpg"}},
+      "Sèche":{conseil:"Nettoyant crème sans sulfate + sérum hydratant sur peau humide + crème riche en céramides.",produit:{nom:"CeraVe Crème Hydratante",prix:"≈ 13 €",lien:"https://www.cerave.fr",img:"produits/cerave-creme-hydratante.jpg"}},
+      "Mixte":{conseil:"Nettoyant doux partout, BHA ciblé sur la zone T si ta peau le tolère, et hydratant plus riche sur les joues.",produit:{nom:"La Roche-Posay Effaclar Gel Moussant Purifiant",prix:"≈ 10 €",lien:"https://www.laroche-posay.fr",img:"produits/lrp-effaclar-gel-moussant.jpg"}},
+      "Normale":{conseil:"Routine simple : nettoyant doux, hydratant léger et protection solaire quotidienne.",produit:{nom:"Nivea Crème Hydratante Essentielle",prix:"≈ 5 €",lien:"https://www.nivea.fr",img:"produits/nivea-creme-essentielle.jpg"}}
+    }},
+    acne:{label:"Acné",question:"Quel type d'acné te concerne le plus ?",options:{
+      "Occasionnelle":{conseil:"Un soin à l'acide salicylique peut être utilisé ponctuellement sur les zones concernées, sans sur-nettoyer le reste du visage.",produit:{nom:"La Roche-Posay Effaclar Duo+",prix:"≈ 16 €",lien:"https://www.laroche-posay.fr",img:"produits/lrp-effaclar-duo.jpg"}},
+      "Régulière":{conseil:"Une routine douce et régulière peut aider. Pour les traitements comme l'adapalène, la disponibilité et le statut sans ordonnance varient selon le pays : demande conseil à un pharmacien ou à un dermatologue. Si l'acné persiste ou est importante, consulte.",produit:{nom:"La Roche-Posay Effaclar Duo+M",prix:"≈ 18 €",lien:"https://www.laroche-posay.fr",img:"produits/lrp-effaclar-duo-m.jpg"}},
+      "Points noirs":{conseil:"Un BHA peut aider à désobstruer les pores. Évite de les extraire toi-même pour limiter les irritations et les marques.",produit:{nom:"La Roche-Posay Effaclar Lotion Astringente",prix:"≈ 12 €",lien:"https://www.laroche-posay.fr",img:"produits/lrp-effaclar-lotion.jpg"}},
+      "Inflammatoire (rouge, douloureux)":{conseil:"Privilégie une routine douce et évite la sur-exfoliation. Pour une acné inflammatoire marquée ou douloureuse, un dermatologue est recommandé.",produit:{nom:"Avène Cicalfate+",prix:"≈ 12 €",lien:"https://www.avene.fr",img:"produits/avene-cicalfate.jpg"}},
+      "Marques post-acné":{conseil:"Niacinamide + exfoliation douce selon tolérance + protection solaire quotidienne. Les marques peuvent mettre du temps à s'estomper.",produit:{nom:"The Ordinary Niacinamide 10% + Zinc 1%",prix:"≈ 6 €",lien:"https://theordinary.com",img:"produits/ordinary-niacinamide.jpg"}}
+    }},
+    taches:{label:"Taches / pigmentation",question:"Quel type de taches te concerne ?",options:{
+      "Taches brunes":{conseil:"Vitamine C le matin + SPF + acide azélaïque ou niacinamide le soir.",produit:{nom:"The Ordinary Vitamine C Suspension 23%",prix:"≈ 7 €",lien:"https://theordinary.com",img:"produits/ordinary-vitaminec.jpg"}},
+      "Marques post-acné":{conseil:"Niacinamide + exfoliation douce + SPF quotidien pour limiter le risque qu'elles foncent.",produit:{nom:"The Ordinary Niacinamide 10% + Zinc 1%",prix:"≈ 6 €",lien:"https://theordinary.com",img:"produits/ordinary-niacinamide.jpg"}},
+      "Teint irrégulier":{conseil:"Niacinamide au quotidien, exfoliation douce 1 à 2 fois par semaine selon tolérance, et SPF.",produit:{nom:"Garnier Vitamine C Booster Sérum",prix:"≈ 10 €",lien:"https://www.garnier.fr",img:"produits/garnier-vitaminec.jpg"}}
+    }},
+    rougeurs:{label:"Rougeurs",question:"Où se situent principalement tes rougeurs ?",options:{
+      "Zone T":{conseil:"Routine minimaliste, niacinamide si bien toléré et éviter les produits très parfumés ou irritants.",produit:{nom:"Avène Antirougeurs Jour",prix:"≈ 17 €",lien:"https://www.avene.fr",img:"produits/avene-antirougeurs.jpg"}},
+      "Joues":{conseil:"Un soin apaisant comme la centella asiatica ou le niacinamide peut convenir, avec un hydratant riche en céramides.",produit:{nom:"Avène Antirougeurs Jour",prix:"≈ 17 €",lien:"https://www.avene.fr",img:"produits/avene-antirougeurs.jpg"}},
+      "Diffuses / peau sensible":{conseil:"Routine très simple : nettoyant doux, soin apaisant, hydratant sans parfum et protection solaire adaptée. Si les rougeurs persistent, s'aggravent ou brûlent, demande un avis médical.",produit:{nom:"Avène Tolérance Extrême",prix:"≈ 14 €",lien:"https://www.avene.fr",img:"produits/avene-tolerance.jpg"}}
+    }},
+    cheveux:{label:"Cheveux",question:"Quel est ton souci principal avec tes cheveux ?",options:{
+      "Gras rapidement":{conseil:"Shampoing équilibrant, lavage selon les besoins et après-shampoing surtout sur les longueurs.",produit:{nom:"Garnier Fructis Argile Purifiante",prix:"≈ 4 €",lien:"https://www.garnier.fr",img:"produits/garnier-argile.jpg"}},
+      "Secs / cassants":{conseil:"Shampoing doux + masque hydratant régulièrement + soin léger sur les longueurs. Limite la chaleur excessive.",produit:{nom:"Garnier Ultra Doux Huile d'Argan",prix:"≈ 4 €",lien:"https://www.garnier.fr",img:"produits/garnier-argan.jpg"}},
+      "Pellicules":{conseil:"Un shampoing antipelliculaire adapté peut aider. Si les pellicules sont importantes, persistantes ou accompagnées d'irritations, demande conseil à un pharmacien ou médecin.",produit:{nom:"Vichy Dercos Anti-Pelliculaire",prix:"≈ 10 €",lien:"https://www.vichy.fr",img:"produits/vichy-dercos.jpg"}},
+      "Abîmés par la chaleur":{conseil:"Réduis la chaleur, utilise une protection thermique et coupe les pointes très abîmées. Un soin conditionneur régulier aide à améliorer l'aspect des longueurs.",produit:{nom:"Garnier Fructis Miel Réparateur",prix:"≈ 5 €",lien:"https://www.garnier.fr",img:"produits/garnier-miel.jpg"}}
+    }},
+    teint:{label:"Teint",question:"Quel est ton sous-ton de peau ?",options:{
+      "Chaud (veines plutôt vertes au poignet)":{conseil:"Les couleurs dorées, kaki, orange brûlé et marron chaud peuvent généralement bien fonctionner."},
+      "Froid (veines plutôt bleues)":{conseil:"Les couleurs comme le bleu marine, le gris, le blanc pur et les bijoux argentés peuvent généralement bien fonctionner."},
+      "Neutre (mélange des deux)":{conseil:"La plupart des couleurs peuvent fonctionner ; teste surtout les tons qui te plaisent et qui s'accordent à ton contraste naturel."},
+      "Je ne sais pas":{conseil:"Regarde tes veines au poignet à la lumière du jour : plutôt vertes peut indiquer un sous-ton chaud, plutôt bleues un sous-ton froid, et un mélange un sous-ton neutre."}
+    }}
+  };
+
+  const diagStep1=document.getElementById('diagStep1');
+  const diagStep2=document.getElementById('diagStep2');
+  const diagResult=document.getElementById('diagResult');
+  const diagSubTitle=document.getElementById('diagSubTitle');
+  const diagSubOptions=document.getElementById('diagSubOptions');
+  const diagResultTitle=document.getElementById('diagResultTitle');
+  const diagResultBody=document.getElementById('diagResultBody');
+
+  function diagShowStep1(){
+    diagStep1.style.display='block';
+    diagStep2.style.display='none';
+    diagResult.style.display='none';
+  }
+
+  document.querySelectorAll('.diag-cat').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      const cat=DIAG_DATA[btn.dataset.cat];
+      diagSubTitle.textContent=cat.question;
+      diagSubOptions.innerHTML='';
+      Object.keys(cat.options).forEach(optionLabel=>{
+        const optBtn=document.createElement('button');
+        optBtn.type='button'; optBtn.className='qn-btn'; optBtn.textContent=optionLabel;
+        optBtn.addEventListener('click',()=>{
+          const data=cat.options[optionLabel];
+          diagResultTitle.textContent=cat.label+' · '+optionLabel;
+          let html='<p>'+escapeHtml(data.conseil)+'</p>';
+          if(data.produit){
+            const pr=data.produit;
+            html+=`<div class="diag-product" style="margin-top:14px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px;display:flex;gap:12px;align-items:center;">
+              <img src="${escapeHtml(pr.img)}" alt="${escapeHtml(pr.nom)}" onerror="this.style.display='none'">
+              <div style="flex:1;min-width:0;"><div style="color:var(--text);font-weight:600;font-size:13.5px;">${escapeHtml(pr.nom)}</div><div style="color:var(--text-dim);font-size:12.5px;margin-top:2px;">${escapeHtml(pr.prix)}</div></div>
+              <a href="${escapeHtml(pr.lien)}" target="_blank" rel="noopener" class="btn btn-primary" style="padding:8px 14px;font-size:12.5px;flex:0 0 auto;">Voir</a>
+            </div>`;
+          }
+          diagResultBody.innerHTML=html;
+          diagStep1.style.display='none'; diagStep2.style.display='none'; diagResult.style.display='block';
+        });
+        diagSubOptions.appendChild(optBtn);
+      });
+      diagStep1.style.display='none'; diagStep2.style.display='block'; diagResult.style.display='none';
+    });
+  });
+  document.getElementById('diagBack').addEventListener('click',diagShowStep1);
+  document.getElementById('diagBack2').addEventListener('click',diagShowStep1);
+
+  refreshSession();
+</script>
+
+</body>
+</html>
